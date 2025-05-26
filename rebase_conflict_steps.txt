@@ -1,0 +1,117 @@
+main
+
+ touch conflict_test.txt
+
+git add .
+
+git commit -m "make txt file"
+
+git push origin main
+
+git switch -c feature
+
+cat conflict_test.txt
+
+다시 돌아와서 main에서 작성
+
+git switch main
+
+커밋
+
+ vim conflict_test.txt
+
+git add .
+
+git commit -m "main conflict update"
+
+feature 브랜치 바꾸기
+
+ git switch feature
+
+내용 적고 커밋
+
+ vim conflict_test.txt
+
+git add .
+
+git commit -m "update conflict feature"
+
+git rebase main
+
+에러 발생
+
+Auto-merging conflict_test.txt
+
+CONFLICT (content): Merge conflict in conflict_test.txt
+
+error: could not apply 9bb20e6... update conflict feature
+
+hint: Resolve all conflicts manually, mark them as resolved with
+
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+
+hint: You can instead skip this commit: run "git rebase --skip".
+
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+
+Could not apply 9bb20e6... update conflict feature
+
+파일 열기, 수정
+
+ vim conflict_test.txt
+
+성공적으로 해결
+
+git add conflict_test.txt
+
+git rebase --continue
+
+git log --oneline
+
+6339837 (**HEAD -> feature**) update conflict feature
+
+9dbf4d7 (**main**) main conflict update
+
+f704cb1 (**origin/main**, **origin/HEAD**) make txt file
+
+804af86 fix:closes #3 - complete
+
+a7a9591 fix #2 2line append
+
+e58d545 fix: #1 issue_test.txt 내용 수정
+
+b53e5f0 Initial commit
+
+(base) sim-youngchan@sim-yeongchan-ui-MacBookAir git_practice % vim conflict_test.txt
+
+feature 브랜치에 푸쉬
+
+git push origin feature
+
+완료
+
+Enumerating objects: 8, done.
+
+Counting objects: 100% (8/8), done.
+
+Delta compression using up to 8 threads
+
+Compressing objects: 100% (6/6), done.
+
+Writing objects: 100% (6/6), 622 bytes | 622.00 KiB/s, done.
+
+Total 6 (delta 3), reused 0 (delta 0), pack-reused 0
+
+remote: Resolving deltas: 100% (3/3), completed with 1 local object.
+
+remote:
+
+remote: Create a pull request for 'feature' on GitHub by visiting:
+
+remote:      https://github.com/skybluesharkk/git_practice/pull/new/feature
+
+remote:
+
+To https://github.com/skybluesharkk/git_practice.git
+
+* [new branch]      feature -> feature
