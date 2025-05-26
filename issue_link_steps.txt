@@ -1,0 +1,12 @@
+1) touch issue_test.txt
+2) vim issue_test.txt
+3) git add .
+4) git commit -m "fix: #1 issue_test.txt 내용 수정"
+5) git push origin main
+6) push 후에 이슈 #1가 자동으로 닫혔는지 확인 완료
+3) git add .
+4) git commit -m "docs: #3 issue_test.txt 최초 내용 추가"
+5) echo "두 번째 라인 추가" >> issue_test.txt
+6) git commit -am "fix: closes #3 - 내용 수정 완료"
+7) push 후 GitHub에서 이슈 #5가 자동으로 닫혔는지 확인
+
